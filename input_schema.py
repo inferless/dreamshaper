@@ -9,6 +9,6 @@ INPUT_SCHEMA = {
     'datatype': 'STRING',
     'required': True,
     'shape': [1],
-    'example': ["https://raahul-test-model-repo.s3.amazonaws.com/tortoise_1.png"]
+    'example': ["https://cdn.britannica.com/25/178225-050-AAF9B658/Desert-tortoise.jpg"]
     }
 }
