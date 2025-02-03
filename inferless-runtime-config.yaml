@@ -12,3 +12,4 @@ build:
     - "transformers==4.31.0"
     - "triton==2.0.0"
     - "xformers==0.0.20"
+    - "huggingface-hub==0.25.2"
