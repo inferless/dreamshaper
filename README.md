@@ -29,54 +29,6 @@ After the create model step, while setting the configuration for the model make 
 
 Enter all the required details to Import your model. Refer [this link](https://docs.inferless.com/integrations/github-custom-code) for more information on model import.
 
-The following is a sample Input and Output JSON for this model which you can use while importing this model on Inferless.
-
-### Input
-```json
-{
-  "inputs": [
-    {
-      "data": [
-        "Image of tortoise painted in color"
-      ],
-      "name": "prompt",
-      "shape": [
-        1
-      ],
-      "datatype": "BYTES"
-    },
-    {
-      "name": "input_image_url",
-      "shape": [
-        1
-      ],
-      "datatype": "BYTES",
-      "data": [
-        "https://raahul-test-model-repo.s3.amazonaws.com/tortoise_1.png"
-      ]
-    }
-  ]
-}
-```
-
-### Output
-```json
-{
-  "outputs": [
-    {
-      "data": [
-        "/9j/4AAQSkZJRgABAQAAAQABAAD....."
-      ],
-      "name": "generated_image_base64",
-      "shape": [
-        1
-      ],
-      "datatype": "BYTES"
-    }
-  ]
-}
-```
-
 ---
 ## Curl Command
 Following is an example of the curl command you can use to make inference. You can find the exact curl command in the Model's API page in Inferless.
@@ -118,11 +70,6 @@ Open the `app.py` file. This contains the main code for inference. It has three 
 **Initialize** -  This function is executed during the cold start and is used to initialize the model. If you have any custom configurations or settings that need to be applied during the initialization, make sure to add them in this function.
 
 **Infer** - This function is where the inference happens. The argument to this function `inputs`, is a dictionary containing all the input parameters. The keys are the same as the name given in inputs. Refer to [input](#input) for more.
-
-```python
-def infer(self, inputs):
-    prompt = inputs["prompt"]
-```
 
 **Finalize** - This function is used to perform any cleanup activity for example you can unload the model from the gpu by setting `self.pipe = None`.
 
