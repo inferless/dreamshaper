@@ -2,7 +2,7 @@ import torch
 from io import BytesIO
 import base64
 from diffusers import DiffusionPipeline
-import PIL.Image
+import PIL
 import base64
 import io
 from diffusers import ControlNetModel, StableDiffusionControlNetPipeline
@@ -33,8 +33,6 @@ class InferlessPythonModel:
         self.pipe = controller
 
     def resize_for_condition_image(self, input_image, resolution: int = 512):
-        import PIL.Image
-
         input_image = input_image.convert("RGB")
         W, H = input_image.size
         k = float(resolution) / min(H, W)
