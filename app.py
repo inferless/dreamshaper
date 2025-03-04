@@ -1,3 +1,6 @@
+import os
+os.environ["HF_HUB_ENABLE_HF_TRANSFER"]='1'
+from huggingface_hub import snapshot_download
 import torch
 from io import BytesIO
 import base64
@@ -11,6 +14,8 @@ import requests
 
 class InferlessPythonModel:
     def initialize(self):
+        model_id = "Lykon/DreamShaper"
+        snapshot_download(repo_id=model_id,allow_patterns=["*.safetensors"])
         brightness_controlnet = ControlNetModel.from_pretrained(
             "ioclab/control_v1p_sd15_brightness", torch_dtype=torch.float16
         )
@@ -22,7 +27,7 @@ class InferlessPythonModel:
         )
 
         controller = StableDiffusionControlNetPipeline.from_pretrained(
-            "Lykon/DreamShaper",
+            model_id,
             controlnet=[brightness_controlnet, tile_controlnet],
             torch_dtype=torch.float16,
             use_safetensors=False,
