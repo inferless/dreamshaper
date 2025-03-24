@@ -13,4 +13,4 @@ build:
     - "triton==2.0.0"
     - "xformers==0.0.20"
     - "hf-transfer==0.1.9"
-    - "huggingface-hub==0.29.1"
+    - "huggingface-hub==0.25.2"
